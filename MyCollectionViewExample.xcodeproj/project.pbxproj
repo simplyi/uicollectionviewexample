@@ -13,6 +13,8 @@
 		94021C771B6BF48F00225485 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94021C761B6BF48F00225485 /* Images.xcassets */; };
 		94021C7A1B6BF48F00225485 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94021C781B6BF48F00225485 /* LaunchScreen.xib */; };
 		94021C861B6BF48F00225485 /* MyCollectionViewExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94021C851B6BF48F00225485 /* MyCollectionViewExampleTests.swift */; };
+		94021C901B6BF56D00225485 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94021C8F1B6BF56D00225485 /* MyCollectionViewCell.swift */; };
+		94021C921B6BFA7E00225485 /* MyImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94021C911B6BFA7E00225485 /* MyImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		94021C7F1B6BF48F00225485 /* MyCollectionViewExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyCollectionViewExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		94021C841B6BF48F00225485 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94021C851B6BF48F00225485 /* MyCollectionViewExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewExampleTests.swift; sourceTree = "<group>"; };
+		94021C8F1B6BF56D00225485 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
+		94021C911B6BFA7E00225485 /* MyImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyImageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				94021C761B6BF48F00225485 /* Images.xcassets */,
 				94021C781B6BF48F00225485 /* LaunchScreen.xib */,
 				94021C6D1B6BF48F00225485 /* Supporting Files */,
+				94021C8F1B6BF56D00225485 /* MyCollectionViewCell.swift */,
+				94021C911B6BFA7E00225485 /* MyImageViewController.swift */,
 			);
 			path = MyCollectionViewExample;
 			sourceTree = "<group>";
@@ -214,6 +220,8 @@
 			files = (
 				94021C721B6BF48F00225485 /* ViewController.swift in Sources */,
 				94021C701B6BF48F00225485 /* AppDelegate.swift in Sources */,
+				94021C921B6BFA7E00225485 /* MyImageViewController.swift in Sources */,
+				94021C901B6BF56D00225485 /* MyCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
