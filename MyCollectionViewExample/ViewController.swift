@@ -10,9 +10,11 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource {
 
+    @IBOutlet weak var myActivityIndicator: UIActivityIndicatorView!
+ 
     @IBOutlet weak var myCollectionView: UICollectionView!
     
-    var images:[String] = []
+    var images = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +42,14 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
         
         let myCell:MyCollectionViewCell = collectionView.dequeueReusableCellWithReuseIdentifier("myCell", forIndexPath: indexPath) as! MyCollectionViewCell
         
+        myCell.myImageView.image = nil
+        
     
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
         
-            let imageString = self.images[indexPath.row]
-            let imageUrl = NSURL(string: imageString)
+            let imageHolder = self.images[indexPath.row] as! [String:AnyObject]
+            let imageThumbString = imageHolder["thumb"] as! String
+            let imageUrl = NSURL(string: imageThumbString)
             let imageData = NSData(contentsOfURL: imageUrl!)
            
           dispatch_async(dispatch_get_main_queue(),{
@@ -68,17 +73,22 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
         
         let myImageViewPage:MyImageViewController = self.storyboard?.instantiateViewControllerWithIdentifier("MyImageViewController") as! MyImageViewController
         
-        myImageViewPage.selectedImage = self.images[indexPath.row]
+        
+        let imageHolder = self.images[indexPath.row] as! [String:AnyObject]
+        let imagePreviewString = imageHolder["preview"] as! String
+        
+        myImageViewPage.selectedImage = imagePreviewString
         
         self.navigationController?.pushViewController(myImageViewPage, animated: true)
-        
-        
-        
+       
       }
-
     
     func loadImages()
     {
+        
+        myActivityIndicator.hidden = false
+        myActivityIndicator.startAnimating()
+        
         let startTime = NSDate.timeIntervalSinceReferenceDate()
         
         var pageUrl = "http://swiftdeveloperblog.com/list-of-images/?uudi=" + NSUUID().UUIDString
@@ -87,7 +97,11 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) {
             data, response, error in
-        
+   
+            dispatch_async(dispatch_get_main_queue(),{
+              self.myActivityIndicator.hidden = true
+              self.myActivityIndicator.stopAnimating()
+            });
             
             // If error display alert message
             if error != nil {
@@ -107,7 +121,7 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
             
              if let parseJSONArray = jsonArray {
                 
-                self.images = parseJSONArray as! [String]
+                self.images = parseJSONArray
                 
                 dispatch_async(dispatch_get_main_queue(),{
                     self.myCollectionView.reloadData()
@@ -119,6 +133,10 @@ class ViewController: UIViewController, UICollectionViewDelegate,UICollectionVie
         task.resume()
         
     }
-
+    
+    @IBAction func refreshButtonTapped(sender: AnyObject) {
+        loadImages()
+    }
+ 
 }
 

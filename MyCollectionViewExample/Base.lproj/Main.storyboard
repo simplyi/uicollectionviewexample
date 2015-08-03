@@ -18,12 +18,17 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fnA-m8-gnn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mKb-Pb-SgX">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
+                                <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="hbr-fL-sLO">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </activityIndicatorView>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="myCell" id="zCj-lf-YL2" customClass="MyCollectionViewCell" customModule="MyCollectionViewExample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -63,9 +68,16 @@
                             <constraint firstItem="fnA-m8-gnn" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="r4z-C0-RvQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="List of images" id="mau-WV-Bfg"/>
+                    <navigationItem key="navigationItem" title="List of images" id="mau-WV-Bfg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="DVA-9a-ZUz">
+                            <connections>
+                                <action selector="refreshButtonTapped:" destination="vXZ-lx-hvc" id="uwG-ZL-fYU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="myActivityIndicator" destination="hbr-fL-sLO" id="JpL-bx-x7d"/>
                         <outlet property="myCollectionView" destination="fnA-m8-gnn" id="cEK-C9-Z7v"/>
                     </connections>
                 </viewController>
